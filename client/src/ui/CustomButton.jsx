@@ -1,19 +1,25 @@
 // CONTEXTS
 import { useStateContext } from "../contexts/state_context";
 
+// CONFIGS
+import { getContrastingColor } from "../configs/helpers";
+
 function CustomButton({ children, onClick, type, customStyles }) {
   const { state } = useStateContext();
 
   const generateStyle = type => {
     switch (type) {
       case "filled":
-        return { backgroundColor: state.color, color: "#fff" };
-
-      case "outlined":
         return {
-          backgroundColor: "#fff",
+          backgroundColor: state.color,
+          color: getContrastingColor(state.color),
+        };
+
+      case "outline":
+        return {
+          borderWidth: "1px",
+          borderColor: state.color,
           color: state.color,
-          border: `1px solid ${state.color}`,
         };
 
       default:
