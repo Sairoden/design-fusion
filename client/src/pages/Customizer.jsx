@@ -5,6 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 // FEATURES COMPONENTS
 import { AIPicker, ColorPicker, FilePicker, Tab } from "../features";
 
+// UI COMPONENTS
+import { CustomButton } from "../ui";
+
 // CONTEXTS
 import { useStateContext } from "../contexts/state_context";
 
@@ -18,7 +21,7 @@ import { fadeAnimation, slideAnimation } from "../configs/motion";
 import { download } from "../assets";
 
 function Customizer() {
-  const { state } = useStateContext();
+  const { state, setState } = useStateContext();
 
   return (
     <AnimatePresence>
@@ -36,6 +39,36 @@ function Customizer() {
                 ))}
               </div>
             </div>
+          </motion.div>
+
+          <motion.div
+            className="absolute z-10 top-5 right-5"
+            {...fadeAnimation}
+          >
+            <CustomButton
+              type="filled"
+              onClick={() =>
+                setState(prevState => ({ ...prevState, intro: true }))
+              }
+              customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+            >
+              Go Back
+            </CustomButton>
+          </motion.div>
+
+          <motion.div
+            className="filtertabs-container"
+            {...slideAnimation("up")}
+          >
+            {FilterTabs.map(tab => (
+              <Tab
+                isFilterTab
+                isActiveTab=""
+                key={tab.name}
+                tab={tab}
+                onClick={() => {}}
+              />
+            ))}
           </motion.div>
         </>
       )}

@@ -49,7 +49,9 @@ function Home() {
 
               <CustomButton
                 type="filled"
-                onClick={() => setState({ ...state, intro: false })}
+                onClick={() =>
+                  setState(prevState => ({ ...prevState, intro: false }))
+                }
                 customStyles="w-fit px-4 py-2.5 font-bold text-sm"
               >
                 Customize it
