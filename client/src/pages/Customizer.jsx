@@ -62,13 +62,16 @@ function Customizer() {
     try {
       // Call our backend to generate an ai image
       setGeneratingImg(true);
-      const res = await fetch("http://localhost:8080/api/v1/dalle", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ prompt }),
-      });
+      const res = await fetch(
+        "https://sairoden-design-fusion.onrender.com/api/v1/dalle",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt }),
+        }
+      );
 
       const data = await res.json();
 
