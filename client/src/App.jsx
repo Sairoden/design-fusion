@@ -15,4 +15,4 @@ function App() {
 
 export default App;
 
-// 43 minutes ka na
+// 1:43

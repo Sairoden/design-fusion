@@ -42,10 +42,30 @@ function Customizer() {
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
 
       case "aipicker":
-        return <AIPicker />;
+        return (
+          <AIPicker
+            promopt={prompt}
+            setPrompt={setPrompt}
+            generatingImg={generatingImg}
+            onSubmit={handleSubmit}
+          />
+        );
 
       default:
         return null;
+    }
+  };
+
+  const handleSubmit = async type => {
+    if (!prompt) return alert("Please enter a prompt");
+
+    try {
+      // Call our backend to generate an ai image
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setGeneratingImg(false);
+      setActiveEditorTab("");
     }
   };
 
