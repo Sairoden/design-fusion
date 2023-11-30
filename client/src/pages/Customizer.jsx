@@ -63,7 +63,7 @@ function Customizer() {
       // Call our backend to generate an ai image
       setGeneratingImg(true);
       const res = await fetch(
-        "https://sairoden-design-fusion.onrender.com/api/v1/dalle",
+        "https://sairoden-design-fusion-backend.onrender.com/api/v1/dalle",
         {
           method: "POST",
           headers: {
